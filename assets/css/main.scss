@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css?family=Bad+Script|Cinzel|Raleway");
+// colors used
+$colors: (
+  mt_primary: #ffedc8,
+  mt_secondary: #40ad6b,
+  mt_mini_bar: #eceff1,
+  mt_social_icons: #0d47a1,
+  mt_navbar_link: #558b2f
+);
+
+$gradients: (
+  delicate: linear-gradient(to right, #d3cce3, #e9e4f0),
+  zinc: linear-gradient(to right, #ada996, #f2f2f2, #dbdbdb, #eaeaea),
+  toad: linear-gradient(to right, #abbaab, #ffffff),
+  cloud: linear-gradient(to right, #ece9e6, #ffffff),
+  mt_circle:
+    radial-gradient(circle, #40ad6b, #85bc74, #b7cb88, #dfdba5, #ffedc8),
+  mt_bottom:
+    linear-gradient(to bottom, #40ad6b, #85bc74, #b7cb88, #dfdba5, #ffedc8),
+  mt_bottom_reverse:
+    linear-gradient(to top, #40ad6b, #85bc74, #b7cb88, #dfdba5, #ffedc8),
+  radial: radial-gradient(circle, #9fcab0, #b4cdb0, #c5cfb4, #d3d2bc, #ddd6c7)
+);
+//padding
+$no_padding: 0;
+$padding_sm: 1em;
+
+//margin
+$no_margin: 0;
+$margin_sm: 1em;
+
+//function for getting the color
+@function color($color) {
+  @return map-get($map: $colors, $key: $color);
+}
+//function for getting linear gradient
+@function gradient($gradient) {
+  @return map-get($map: $gradients, $key: $gradient);
+}
+
+html,
+body {
+  width: 100%;
+  margin: $no_margin;
+  background-image: gradient(radial);
+  font-family: "Raleway", sans-serif;
+}
+.container-fluid {
+  padding: $no_padding;
+  margin: $no_margin;
+  .mini-bar {
+    font-family: "Cinzel", serif;
+    margin: 0;
+    height: 2em;
+    background-color: color(mt_mini_bar);
+    padding: 0em $padding_sm;
+
+    .mobile {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .fa-facebook-square:hover {
+      color: color(mt_social_icons);
+    }
+    .fa-facebook-square {
+      color: #039be5;
+    }
+    .fa-instagram {
+      color: #d6249f;
+    }
+    .fa-instagram:hover {
+      background: radial-gradient(
+        circle at 30% 107%,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%
+      );
+    }
+  }
+}
+.hover-links {
+  li {
+    position: relative;
+  }
+  a {
+    color: color(mt_secondary);
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+  }
+
+  a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: color(mt_secondary);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  a:hover {
+    color: color(mt_navbar_link);
+    text-decoration: none;
+  }
+  a:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+}
+
+nav {
+  @extend .hover-links;
+  height: 100px;
+  padding: $padding_sm, 0em;
+  a {
+    font-size: 1.4em;
+    font-family: "Cinzel", serif;
+  }
+}
+
+.navbar-nav {
+  li {
+    margin: 0 1em;
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: color(mt_primary);
+  // background-color: gradient(zinc)
+
+  a:before {
+    background-color: color(mt_navbar_link);
+  }
+}
+
+.sticky + .container {
+  padding-top: 100px !important;
+}
+
+#sticky-footer {
+  width: 100%;
+  line-height: 20px; /* Vertically center the text there */
+  background-color: color(mt_primary);
+  font-family: "Cinzel", serif;
+  color: black;
+  a {
+    font-family: "Raleway", sans-serif;
+  }
+}
+
+.banner {
+  width: 150px;
+  height: 130px;
+  background: url("../new_logo.jpg");
+}
+
+.info > * {
+  margin-bottom: $no_margin;
+}
+
+ul {
+  list-style: none;
+}
+
+small {
+  font-family: "Bad Script", cursive !important;
+}
+
+/* Glyph, by Harry Roberts */
+hr.style-eight {
+  overflow: visible; /* For IE */
+  padding: 0;
+  border: none;
+  border-top: medium double #333;
+  color: #333;
+  text-align: center;
+}
+
+hr.style-eight:after {
+  content: "§";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  background: color(mt_primary);
+}
+
+hr.style-seven {
+  overflow: visible; /* For IE */
+  height: 30px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+}
+hr.style-seven:before {
+  /* Not really supposed to work, but does */
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}
+
+.query {
+  background-color: color(mt_secondary) !important;
+}
+
+.center-crop {
+  object-fit: cover;
+  object-position: center;
+  height: 540px;
+}
+.contact {
+  position: absolute;
+  left: 100px;
+  top: 200px;
+  opacity: 0.4;
+  transition: 2s ease-in;
+  height: 300px;
+  background: #fafafa;
+}
+.contact:hover {
+  opacity: 0.8;
+  transform: scale(1.3);
+  background: #fff9ec;
+}
+
+.card-image {
+  width: 450px;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+.card-body {
+  opacity: 0.5;
+}
+.jumbotron > img {
+  max-width: 100%;
+  max-height: 100%;
+  height: 500;
+}
+.places-img{
+    width: 300px;
+    height: 250px;
+}

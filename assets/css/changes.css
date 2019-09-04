@@ -1,0 +1,11 @@
+h6, h5{
+    font-weight:900;
+}
+
+.content {
+  height: 100vh;
+}
+
+form {
+  padding: 2em;
+}
