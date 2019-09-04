@@ -9,7 +9,7 @@
         allowfullscreen>
 </iframe>
 <div class="card contact col-md-4">
-    <div class="card-body">
+    <div class="card-body contact-body">
         <div class="card-title text-center">
             CONTACT
         </div>
