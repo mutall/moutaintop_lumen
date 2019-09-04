@@ -227,7 +227,7 @@ hr.style-seven:before {
      object-position: center;
 }
 
-.card-body {
+.contact-body {
   opacity: 0.5;
 }
 
@@ -242,35 +242,11 @@ hr.style-seven:before {
   height: 250px;
 }
 
-#form {
+.form {
   display: none;
 }
 
 #form > * {
   margin-bottom: 10px;
-}
-
-my_button, #form button:hover, #form button, #delete, #delete:hover {
-  border-radius: 20px;
-}
-
-#form button:hover {
-  background: #00c300;
-  color: #f2f2f2;
-}
-
-#form button {
-  color: #00c300;
-  background: #f2f2f2;
-}
-
-#delete {
-  color: #c62828;
-  background: #f2f2f2;
-}
-
-#delete:hover {
-  background: #c62828;
-  color: #f2f2f2;
 }
 /*# sourceMappingURL=main.css.map */
