@@ -12,6 +12,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
 .container-fluid .mini-bar {
   font-family: "Cinzel", serif;
   margin: 0;
@@ -19,19 +20,24 @@ body {
   background-color: #eceff1;
   padding: 0em 1em;
 }
+
 .container-fluid .mini-bar .mobile {
   font-size: 16px;
   font-weight: 600;
 }
+
 .container-fluid .mini-bar .fa-facebook-square:hover {
   color: #0d47a1;
 }
+
 .container-fluid .mini-bar .fa-facebook-square {
   color: #039be5;
 }
+
 .container-fluid .mini-bar .fa-instagram {
   color: #d6249f;
 }
+
 .container-fluid .mini-bar .fa-instagram:hover {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
 }
@@ -39,6 +45,7 @@ body {
 .hover-links li, nav li {
   position: relative;
 }
+
 .hover-links a, nav a {
   color: #40ad6b;
   font-size: 1em;
@@ -46,6 +53,7 @@ body {
   text-decoration: none;
   position: relative;
 }
+
 .hover-links a:before, nav a:before {
   content: "";
   position: absolute;
@@ -55,22 +63,28 @@ body {
   left: 0;
   background-color: #40ad6b;
   visibility: hidden;
-  transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
+
 .hover-links a:hover, nav a:hover {
   color: #558b2f;
   text-decoration: none;
 }
+
 .hover-links a:hover:before, nav a:hover:before {
   visibility: visible;
-  transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
 }
 
 nav {
   height: 100px;
   padding: 1em, 0em;
 }
+
 nav a {
   font-size: 1.4em;
   font-family: "Cinzel", serif;
@@ -87,6 +101,7 @@ nav a {
   z-index: 2;
   background-color: #ffedc8;
 }
+
 .sticky a:before {
   background-color: #558b2f;
 }
@@ -103,6 +118,7 @@ nav a {
   font-family: "Cinzel", serif;
   color: black;
 }
+
 #sticky-footer a {
   font-family: "Raleway", sans-serif;
 }
@@ -173,8 +189,10 @@ hr.style-seven:before {
 }
 
 .center-crop {
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
   height: 540px;
 }
 
@@ -183,6 +201,7 @@ hr.style-seven:before {
   left: 100px;
   top: 200px;
   opacity: 0.4;
+  -webkit-transition: 2s ease-in;
   transition: 2s ease-in;
   height: 300px;
   background: #fafafa;
@@ -190,18 +209,22 @@ hr.style-seven:before {
 
 .contact:hover {
   opacity: 0.8;
-  transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
   background: #fff9ec;
 }
 
 .card-image {
   width: 450px;
 }
+
 .card-image img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .card-body {
@@ -219,4 +242,35 @@ hr.style-seven:before {
   height: 250px;
 }
 
+#form {
+  display: none;
+}
+
+#form > * {
+  margin-bottom: 10px;
+}
+
+my_button, #form button:hover, #form button, #delete, #delete:hover {
+  border-radius: 20px;
+}
+
+#form button:hover {
+  background: #00c300;
+  color: #f2f2f2;
+}
+
+#form button {
+  color: #00c300;
+  background: #f2f2f2;
+}
+
+#delete {
+  color: #c62828;
+  background: #f2f2f2;
+}
+
+#delete:hover {
+  background: #c62828;
+  color: #f2f2f2;
+}
 /*# sourceMappingURL=main.css.map */
