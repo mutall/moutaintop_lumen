@@ -46,7 +46,9 @@
 </div>
 <div class="container text-center ">
     <hr class="style-eight">
-    <small class="hover-links">Website  <a href="http://portfolio.mutalldevs.co.ke">amshel</a></small>
+    <small class="hover-links">Website  <a href="http://portfolio.mutalldevs.co.ke">amshel </a></small>
+    ||
+    <small class="hover-links">Login <a href="/index.php/auth">admin</a></small>
 </div>
 
 </footer>
