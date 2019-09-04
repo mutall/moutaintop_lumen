@@ -33,4 +33,4 @@ $router->post('auth', 'AuthController@authenticate');
 
 $router->get('/insert/user', 'AuthController@user');
 
-$router->get('/rename', 'RenameController@index');
+$router->post('/rename', 'ChangeController@rename');
