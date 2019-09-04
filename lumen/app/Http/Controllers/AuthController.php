@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Contracts\Encryption\DecryptException;
 
 class AuthController extends Controller {
 
@@ -25,7 +23,8 @@ class AuthController extends Controller {
             $decrypt_password = Crypt::decrypt($result->password);
             
             if (strcmp($decrypt_password, $password) == 0) {
-                return view('dashboard', ['user' => $result->name]);
+                return view('dashboard', ['user' => $result->name, 
+                                            'pictures'=> DB::table('picture')->orderBy('location', 'desc')->get()]);
             }else{
                 
                 return view('login', ['err'=>"invalid password"]);
