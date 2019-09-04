@@ -1,8 +1,15 @@
 <?php
 include "partials/header.php";
 ?>
+<div role="alert" aria-live="assertive" aria-atomic="true" class="toast">
+    <div class="toast-header">
+        <strong class="mr-auto">Logged In</strong>
+    </div>
+    <div class="toast-body">
+        Welcome back <?php echo $user; ?>
+    </div>
+</div>
 <div id="content-wrapper">
-
     <div class="container mt-5">
         <!-- DataTables Example -->
         <div class="card mb-3">
@@ -36,16 +43,16 @@ include "partials/header.php";
                                         <br>
                                         <hr>
                                         <?php
-                                            if($picture->location == "slider"){
+                                            if ($picture->location == "slider") {
                                                 echo "<button onclick = 'moveImage($picture->picture)' class='btn btn-info'>Remove from slider</button>";
-                                            }else{
+                                            } else {
                                                 echo "<button onclick = 'moveImage($picture->picture)' class='btn btn-info'>Add to slider</button>";
-                                            } 
-                                        ?>
+                                            }
+                                            ?>
                                         <br>
                                         <hr>
                                         <button class="btn btn-danger" id="delete" onclick="deleteImage(<?php echo $picture->picture; ?>, this.parentNode.parentNode)">DELETE IMAGE</button>
-                                        </td>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -60,57 +67,56 @@ include "partials/header.php";
 <!-- /.content-wrapper -->
 </div>
 <script>
-
     const showRename = (button) => {
         button.nextElementSibling.style.display = "block";
         button.style.display = "none";
     }
     const renameImage = (id, input) => {
-        if (!input.value)  {
+        if (!input.value) {
             alert("Cannot be empty")
         } else {
             fetch('/rename', {
                 method: 'post',
                 headers: {
-                'Content-type': 'application/json'
+                    'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                                        id:id,
-                                        caption: input.value
-                                    })
+                    id: id,
+                    caption: input.value
+                })
             }).then(response => {
                 return response.text();
-            }).then(data =>{
-                if(data == "success"){
+            }).then(data => {
+                if (data == "success") {
                     input.parentNode.style.display = "none";
-                    input.parentNode.previousElementSibling.style.display = "block";
+                    input.parentNode.previousElementSibling.style.display = "blocks";
                     document.querySelector(`#caption_${id}`).innerHTML = `CAPTION: ${input.value}`;
-                }else{
+                } else {
                     console.log("not successful");
                 }
-            }).catch(err =>console.log(err));
+            }).catch(err => console.log(err));
         }
     };
     const deleteImage = (id, row) => {
-        if(confirm("You are about to delete this image")){
+        if (confirm("You are about to delete this image")) {
             fetch('/delete', {
-                method: 'post',
-                headers: {
-                'Content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                                        id:id,
-                                    })
-            })
-                .then(response =>{
+                    method: 'post',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: id,
+                    })
+                })
+                .then(response => {
                     return response.text();
                 })
                 .then(data => {
-                    if(data == "deleted"){
-                        row.style.display = "none";    
+                    if (data == "deleted") {
+                        row.style.display = "none";
                     }
                 })
-                .catch(err =>console.error(err));
+                .catch(err => console.error(err));
 
         }
     };
@@ -119,22 +125,28 @@ include "partials/header.php";
         fetch('/move_image', {
                 method: 'post',
                 headers: {
-                'Content-type': 'application/json'
+                    'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                                        id,
-                                    })
+                    id,
+                })
             })
             .then(response => response.text())
             .then(data => {
                 alert(`Image relocated to ${data}`)
                 document.location.reload();
             })
-            .catch(err =>console.error(err));
+            .catch(err => console.error(err));
 
     }
-    
 </script>
-<!-- /#wrapper -->
-<?php
-include "partials/footer.php";
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script>
+    $('.toast').toast();
+</script>
+</body>
+
+</html>
