@@ -34,3 +34,5 @@ $router->post('auth', 'AuthController@authenticate');
 $router->get('/insert/user', 'AuthController@user');
 
 $router->post('/rename', 'ChangeController@rename');
+$router->post('/delete', 'ChangeController@delete');
+$router->post('/move_image', 'ChangeController@change_slider');
