@@ -75,7 +75,7 @@ include "partials/header.php";
         if (!input.value) {
             alert("Cannot be empty")
         } else {
-            fetch('/rename', {
+            fetch('/index.php/rename', {
                 method: 'post',
                 headers: {
                     'Content-type': 'application/json'
@@ -99,7 +99,7 @@ include "partials/header.php";
     };
     const deleteImage = (id, row) => {
         if (confirm("You are about to delete this image")) {
-            fetch('/delete', {
+            fetch('/index.php/delete', {
                     method: 'post',
                     headers: {
                         'Content-type': 'application/json'
@@ -122,7 +122,7 @@ include "partials/header.php";
     };
 
     const moveImage = id => {
-        fetch('/move_image', {
+        fetch('/index.php/move_image', {
                 method: 'post',
                 headers: {
                     'Content-type': 'application/json'
